@@ -20,10 +20,14 @@ if passwd != "no_input":
         if errorcode.ER_ACCESS_DENIED_ERROR == ez.errno:
             print("\nAccess Denied: Kindly recheck your connection parameters..")
             quit()
+    except mysql.connector.InterfaceError as ez2:
+        if ez2.errno == 2003:
+            print("ERROR: Kindly recheck your connection parameters\n")
+            quit()
 
 
 elif passwd == "no_input":                     #if user does not enters password, program will just shut down
-    print("NO PASSWORD ENTERED!! \nKINDLY RERUN THE PROGRAM")
+    print("NO PASSWORD ENTERED!! \nKINDLY RERUN THE PROGRAM\n")
     quit()
 
 ## Defining a cursor object
