@@ -22,7 +22,7 @@ WHAT CAN YOU DO IN THIS :-
 (2)   	see created databases
 (3)   	use database
 (4)   	delete a database
-(5)   	create table with n number of columns
+(5)   	create table with n number of columns and desired constrains
 (6)   	show created tables
 (7)   	add an attribute in a table
 (8)   	delete an attribute in a table
