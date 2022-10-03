@@ -4,16 +4,16 @@ from mysql.connector import errorcode
 
 
 ## Creating connection object
-hostname = input("\nPLEASE ENTER YOUR HOSTNAME (By default: localhost):" ) or "localhost"     #no actuall need to enter you username and passwd if you have default ones
-username = input("PLEASE ENTER YOUR USERNAME(By default: root ):") or "root"
+hostname = input("\nPLEASE ENTER YOUR HOSTNAME (By default: localhost):" )    #no actuall need to enter you username and passwd if you have default ones
+username = input("PLEASE ENTER YOUR USERNAME(By default: root ):")
 passwd = input("PLEASE ENTER YOUR USER PASSWORD:") or "no_input"
 
 if passwd != "no_input":
     try:
         mydb = mysql.connector.connect(
-            host = hostname,
-            user = username,
-            password = passwd,
+            host = hostname or "localhost",
+            user = username or "root",
+            password = passwd
     )
 
     except mysql.connector.ProgrammingError as ez:
@@ -22,7 +22,7 @@ if passwd != "no_input":
             quit()
     except mysql.connector.InterfaceError as ez2:
         if ez2.errno == 2003:
-            print("ERROR: Kindly recheck your connection parameters\n")
+            print("\nERROR: Kindly recheck your connection parameters\nAlso check if mysql service is enabled..")
             quit()
 
 
@@ -158,7 +158,7 @@ def inputer():
             degree = x[0]     #stored the number of columns in degree var
 
 
-        choice = input("DO YOU WANT TO SEE THE TABLE STRUCTURE?: \n \n y for yes and n for no:")
+        choice = input("\nDO YOU WANT TO SEE THE TABLE STRUCTURE?: \n \n y for yes and n for no:")
 
         if choice == "y":
                     cursor_obj.execute("DESCRIBE {}".format(table_name))
@@ -174,11 +174,11 @@ def inputer():
         choice2 = int(input("\nENTER THE NUMBER OF RECORDS YOU WANT TO ENTER: "))    #determining the number of records to be entered 
         a = 0
         while a < choice2:                #loop for showing the record number and for adding multiple records at a time
-            print("INPUTS FOR RECORD NO {}".format(a+1))
+            print("INPUTS FOR RECORD NO {} -->\n".format(a+1))
             i = 0
             list1 = []
             while i < degree:             #loop to show the input number and appending the inputs into a list
-                x1 = input("ENTER INPUT NO.{}: \n ".format(i+1))
+                x1 = input("ENTER INPUT NO.{}: ".format(i+1))
                 list1.append(x1)
                 i = i + 1
 
@@ -196,11 +196,11 @@ def inputer():
 
 ## Function to display the whole content of the table
 def print_table():
-    table_name = input("ENTER THE NAME OF THE TABLE TO PRINT:") or "no_input"
+    table_name = input("\nENTER THE NAME OF THE TABLE TO PRINT:") or "no_input"
 
     if table_name != "no_input":
 
-        choice = input("WHAT PORTION OF TABLE WOULD YOU LIKE TO PRINT? : \n \n(a)WHOLE TABLE \n \n(b)A SPECIFIC COLUMN \n \n(c)A WHOLE RECORD REFFERING TO RECORD IN SPECIFIED COLUMN \n \n(d) STRUCTURE OF THE TABLE -->")
+        choice = input("\nWHAT PORTION OF TABLE WOULD YOU LIKE TO PRINT? : \n \n(a)WHOLE TABLE \n \n(b)A SPECIFIC COLUMN \n \n(c)A WHOLE RECORD REFFERING TO RECORD IN SPECIFIED COLUMN \n \n(d) STRUCTURE OF THE TABLE -->")
 
         if choice == 'a':
                 cursor_obj.execute("select * from {}".format(table_name))
@@ -208,7 +208,7 @@ def print_table():
                     print(x)
 
         elif choice == 'b':
-            x = input("PLEASE ENTER THE NAME OF COLUMN TO PRINT:")
+            x = input("\nPLEASE ENTER THE NAME OF COLUMN TO PRINT:")
             cursor_obj.execute("select {} from {}".format(x,table_name))
             for i in cursor_obj:
                 print(i)
@@ -224,7 +224,7 @@ def print_table():
                 for i in cursor_obj:
                     print(i)
 
-                print("THE STRUCTURE OF TABLE--")
+                print("THE STRUCTURE OF TABLE-->")
 
                 cursor_obj.execute("describe {}".format(table_name))
                 for x in cursor_obj:
@@ -283,9 +283,9 @@ def column_del():
     except mysql.connector.ProgrammingError as e:
         if errorcode.ER_NO_SUCH_TABLE == e.errno:
             print("\nERROR: Table does not exist..")
-            print("Kindly rerun the program..")
+            print("Kindly rerun the program..\n")
         if errorcode.ER_CANT_DROP_FIELD_OR_KEY == e.errno:
-            print("ERROR: Can't delete column, column does not exist..")
+            print("\nERROR: Can't delete column, column does not exist..")
 
 # Modifying a column
 def column_modify():
@@ -299,11 +299,11 @@ def column_modify():
             cursor_obj.execute("ALTER TABLE {} MODIFY {} {}({})".format(table_name,column_new,dat_new,size_new))
 
         elif table_name or column_new or dat_new or size_new == "no-input":
-            print("SOME INPUT SEEMS TO BE MISSING \nKINDLY RERUN THE PROGRAM")
+            print("\nSOME INPUT SEEMS TO BE MISSING \nKINDLY RERUN THE PROGRAM")
 
     except mysql.connector.ProgrammingError as e:
         if errorcode.ER_PARSE_ERROR == e.errno:
-            print("Kindly recheck your column parameters..")
+            print("\nKindly recheck your column parameters..")
 
 
 ## Defining a menu for performing tasks
@@ -312,7 +312,7 @@ def menu():
 
     if choice == '1':
         
-        x1 = input("(a) CREATE A DATABASE \n \n(b) USE A DATABASE \n \n(c) DROP A DATABASE-->")
+        x1 = input("\n(a) CREATE A DATABASE \n \n(b) USE A DATABASE \n \n(c) DROP A DATABASE-->")
 
         if x1 == "a":
             database_create()
@@ -324,7 +324,7 @@ def menu():
 
 
     elif choice == '2':
-        x2 = input("(a) SHOW AVAILABLE DATABASES \n \n(b) SHOW AVAILABLE TABLES -->")
+        x2 = input("\n(a) SHOW AVAILABLE DATABASES \n \n(b) SHOW AVAILABLE TABLES -->")
         if x2 == "a":
             database_show()
 
@@ -333,12 +333,12 @@ def menu():
 
 
     elif choice == '3':
-        x3 = input("(A) CREATE A TABLE \n \n(B) MANIPULATE A TABLE \n \n(C) DELETE A TABLE-->")
+        x3 = input("\n(a) CREATE A TABLE \n \n(b) MANIPULATE A TABLE \n \n(c) DELETE A TABLE-->")
         if x3 == "a":
             table_creator()
 
         elif x3 == "b":
-            y1 = input("(a) ADD AN ATTRIBUTE \n \n(b) DELETE AN ATTRIBUTE \n \n(c) MODIFY AN ATTRIBUTE -->")
+            y1 = input("\n(a) ADD AN ATTRIBUTE \n \n(b) DELETE AN ATTRIBUTE \n \n(c) MODIFY AN ATTRIBUTE -->")
             if y1 == "a":
                 column_add()
 
@@ -359,10 +359,10 @@ def menu():
 
 
     else:
-        print("INVALID SELECTION")
+        print("\nERROR: Invalid Selection..")
 
 ## Initiating the program
-print('Pydbms Beta 2.0 \nAUTHOR: ARASHDEEP SINGH \nWELCOME, THIS IS A DBMS BASED ON PYTHON CONNECTOR \nREQUIREMENTS: MySQL INSTALLED ALONG WITH PYTHON CONNECTOR COMPONENTS \nFor any furthur query ,CONTACT: mangoshake5888@gmail.com  ')
+print('\nPydbms Beta 4.0 \nAUTHOR: ARASHDEEP SINGH \nWELCOME, THIS IS A DBMS BASED ON PYTHON CONNECTOR \nREQUIREMENTS: MySQL INSTALLED ALONG WITH PYTHON CONNECTOR COMPONENTS \nFor any furthur query ,CONTACT: mangoshake5888@gmail.com  ')
 
 option = 'y'
 while option == 'y':
