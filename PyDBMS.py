@@ -363,10 +363,8 @@ print('Pydbms Beta 2.0 \nAUTHOR: ARASHDEEP SINGH \nWELCOME, THIS IS A DBMS BASED
 option = 'y'
 while option == 'y':
     menu()
-
-    option = input("\nDO YOU WANT TO CONTINUE? \n y or n: ")
+    option = input("DO YOU WANT TO CONTINUE? \n y or no: \n \n ")
 
     if option == 'n':
         print("\nFine, Have a nice day")
-
         quit()
