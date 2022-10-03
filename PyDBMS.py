@@ -323,13 +323,13 @@ def menu():
         print("INVALID SELECTION")
 
 ## Initiating the program
-print('Pydbms Beta 2.0 \nAUTHOR: ARASHDEEP SINGH \nWELCOME, This is a DBMS based on python connector \nREQUIREMENTS: MySQL installed along with python connector component \nFor any furthur query , contact: mangoshake5888@gmail.com  ')
+print('Pydbms Beta 2.0 \nAUTHOR: ARASHDEEP SINGH \nWELCOME, THIS IS A DBMS BASED ON PYTHON CONNECTOR \nREQUIREMENTS: MySQL INSTALLED ALONG WITH PYTHON CONNECTOR COMPONENTS \nFor any furthur query ,CONTACT: mangoshake5888@gmail.com  ')
 
 option = 'y'
 while option == 'y':
     menu()
 
-    option = input("DO YOU WANT TO CONTINUE? \n y for yes \n n for no: \n \n ")
+    option = input("DO YOU WANT TO CONTINUE? \n y or no: \n \n ")
 
     if option == 'n':
         print("Fine, Have a nice day")
