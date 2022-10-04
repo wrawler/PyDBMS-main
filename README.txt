@@ -4,12 +4,8 @@
                                                                                                                                                           
 Welcome :)                                                                                                                                         
 By this program you may use MYSQL DBMS without any need of using actuall commands              
-                                                                                                                                                          
-                                                                                                                                                           
-                                                                                                                                                          
-This copy can be distributed only by the permission of author.                                                             
-                                                                                                                                                          
-									          
+                                                                                         
+                                                                                                                            
                                                                     				                          
 REQUIREMENTS:                                                                                                                            
 MySQL installed                                                                                                                                 
