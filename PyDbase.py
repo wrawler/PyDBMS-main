@@ -15,14 +15,19 @@ if passwd != "no_input":
             user = username or "root",
             password = passwd
     )
+    except mysql.connector.DatabaseError as ez3:
+        if ez3.errno == 2005:
+            print("\nNo host present named",'"',hostname,'"',"\nKindly rerun the program")
+            exit()
 
     except mysql.connector.ProgrammingError as ez:
         if errorcode.ER_ACCESS_DENIED_ERROR == ez.errno:
             print("\n>>Access Denied: Kindly recheck your connection parameters..")
             quit()
+
     except mysql.connector.InterfaceError as ez2:
         if ez2.errno == 2003:
-            print("\n>>ERROR: Kindly recheck your connection parameters\n        If you think parameters are correct, check if mysql service is enabled...\n")
+            print("\n>>ERROR: Kindly recheck your connection parameters\n\t\tIf you think parameters are correct, check if mysql service is enabled...\n")
             quit()
 
 
@@ -143,6 +148,7 @@ def table_creator():
                 err_handle()
 
             i = i+1
+            
     except mysql.connector.ProgrammingError as e:
         if errorcode.ER_CANT_CREATE_TABLE == e.errno:
             print("\n>>ERROR: Can't create table, table already exists...")
@@ -533,7 +539,7 @@ def menu_op_6():
 
 ## Defining a menu for performing tasks
 def menu():
-    choice = input("\nWHAT DO YOU WISH TO DO?:\n\nKindly consider using a database if you wish to work on a pre-existing database\n (1) DATABASE CREATION AND USAGE \n \n (2) DISPLAY AVAILABLE TABLES AND DATABASES \n \n (3) TABLE CREATION AND MODIFICATION \n \n (4) INPUT RECORDS TO A TABLE \n \n (5) PRINT A TABLE \n \n (6) QUIT\n \n PLEASE ENTER ONLY THE OPTION AS PER CHOICE WITHOUT BRACKETS -->")
+    choice = input("\nWhat do you wish to do?:\n\nKindly consider using a database if you wish to work on a pre-existing database\n (1) DATABASE CREATION AND USAGE \n \n (2) Display available Tables or Databases \n \n (3) Table Creation and Modifications \n \n (4) Input Records in a table \n \n (5) Print a table \n \n (6) QUIT\n \n Please enter a chocie as the per the options -->")
 
     if choice == '1':
         menu_op_1()
@@ -560,7 +566,7 @@ def menu():
         err_handle()
 
     else:
-        print("\nERROR: Invalid Selection..\n       Entering the main menu...")
+        print("\nERROR: Invalid Selection..\n   \tEntering the main menu...")
         menu()
 ## Initiating the program
 print('\nPydbms Beta 4.0 \nAUTHOR: ARASHDEEP SINGH \nWELCOME, THIS IS A DBMS BASED ON PYTHON CONNECTOR \nREQUIREMENTS: MySQL INSTALLED ALONG WITH PYTHON CONNECTOR COMPONENTS \nFor any furthur query ,CONTACT: mangoshake5888@gmail.com  ')
