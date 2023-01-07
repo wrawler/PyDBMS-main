@@ -2,7 +2,6 @@
 import mysql.connector
 from mysql.connector import errorcode
 
-
 ## Creating connection object
 hostname = input("\n>>PLEASE ENTER YOUR HOSTNAME (By default: localhost):" )    #no actuall need to enter you username and passwd if you have default ones
 username = input(">>PLEASE ENTER YOUR USERNAME(By default: root ):")
@@ -61,7 +60,7 @@ def database_create():
             err_handle()
 
         else:
-            print(">>Table created with no errors..")
+            print(">>Database created with no errors..")
 
     err_handle()
 
@@ -117,7 +116,6 @@ def table_creator():
         print("\nKindly first create the initiating column for table, you would be given choice to create table with as much columns you want...")   
                             # first created a table with one column and added more columns showing that all the columns were made at time of table creations
         
-
         a = input("NAME FOR COLUMN 1:")
         t = input("DATATYPE OF COLUMN 1:")
         size = input("SIZE OF COLUMN 1:")
@@ -130,8 +128,8 @@ def table_creator():
         elif choice1 == "n":
             cursor_obj.execute("CREATE TABLE {} ({} {}({}))".format(table_name,a,t,size))
 
-        x = int(input("PLEASE ENTER THE NUMBER OF COLUMNS YOU WANT IN TABLE:"))          #determing the desired degree of table
-        i = 1 
+        x = int(input("PLEASE ENTER THE NUMBER OF COLUMNS YOU WANT IN TABLE:"))          #determining the desired degree of table
+        i = 1
         while i < x:                                                  #loop to add columns to table
             a1 = input("NAME FOR COLUMN {}:".format(i+1))
             t1 = input("DATATYPE FOR COLUMN {}:".format(i+1))
@@ -189,7 +187,6 @@ def commit():
         print(">>Changes unsaved due to invalid selection")
     
     err_handle()
-
 
 ## To input values to a table
 def inputer():
