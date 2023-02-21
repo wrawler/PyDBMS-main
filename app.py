@@ -1,24 +1,17 @@
 from tkinter import *
 from tkinter import filedialog
 import os
-<<<<<<< HEAD
 from PIL import Image, ImageDraw, ImageTk
-=======
-from PIL import Image, ImageDraw
->>>>>>> 3397063 (no change)
 import mysql.connector
 from mysql.connector import errorcode
 
 #_________Creating a function to connect to mysql database
-<<<<<<< HEAD
 mydb = None
 
 def connect(a,b,c,d):
     global mydb
-=======
 
 def connect(a,b,c,d):
->>>>>>> 3397063 (no change)
     try:
         mydb = mysql.connector.connect(
             host = "{}".format(a),
@@ -28,7 +21,6 @@ def connect(a,b,c,d):
         )
 
         if mydb.is_connected():
-<<<<<<< HEAD
             conn_status_yes = ImageTk.PhotoImage(Image.open("tick.png"))
             conn_status_label.config(image=conn_status_yes,highlightthickness=0,borderwidth=0)
             conn_status_label.image=conn_status_yes
@@ -39,41 +31,19 @@ def connect(a,b,c,d):
     except mysql.connector.DatabaseError as ez3:
         if ez3.errno == 2005:
             print("\nNo host present named",'"',a,'"',"\nKindly rerun the program")
-=======
-            print("Connected to Database")
-
-    except mysql.connector.DatabaseError as ez3:
-        if ez3.errno == 2005:
-            print("\nNo host present named",'"',a,'"',"\nKindly rerun the program")
-            exit()
->>>>>>> 3397063 (no change)
 
     except mysql.connector.ProgrammingError as ez:
         if errorcode.ER_ACCESS_DENIED_ERROR == ez.errno:
             print("\n>>Access Denied: Kindly recheck your connection parameters..")
-<<<<<<< HEAD
-=======
-            quit()
->>>>>>> 3397063 (no change)
 
     except mysql.connector.InterfaceError as ez2:
         if ez2.errno == 2003:
             print("\n>>ERROR: Kindly recheck your connection parameters\n\t\tIf you think parameters are correct, check if mysql service is enabled...\n")
-<<<<<<< HEAD
 
 
 #__________Creating a window to connect to mysql database_________
 
 
-=======
-            quit()
-        
-    if mydb.is_connected():
-        print("Connected to Database")
-
-#__________Creating a window to connect to mysql database_________
-
->>>>>>> 3397063 (no change)
 def connector_window():
     top1 = Toplevel(root)
     top1.transient(root)
@@ -99,7 +69,6 @@ def connector_window():
     hostname = e1.get()
     username = e2.get()
     passwd = e3.get()
-<<<<<<< HEAD
     dbname = e4.get()
 
     connect_button = Button(top1,text="Connect",font=("Arial",15),command=lambda:[connect(hostname,username,passwd,dbname),top1.destroy()]).place(x=150,y=200,anchor="nw")
@@ -110,13 +79,6 @@ def connector_window():
     pass_button = Button(top1,image = hide_image).place(x=150,y=100,anchor="nw")
     hide_image_label.image = hide_image
 
-=======
-    dbaname = e4.get()
-
-    connect_button = Button(top1,text="Connect",font=("Arial",15),command=lambda:[connect(hostname,username,passwd,dbaname),top1.destroy()]).place(x=150,y=200,anchor="nw")
-    cancel_button = Button(top1,text="Cancel",font=("Arial",15),command=top1.destroy).place(x=300,y=200,anchor="nw")
-
->>>>>>> 3397063 (no change)
 def quit():
     top2 = Toplevel(root)
     top2.geometry("150x80")
@@ -125,11 +87,7 @@ def quit():
     exit_label.place(x=0,y=0)
 
     no = Button(top2,text="cancel",font = ("Arial",13),command = top2.destroy,relief=RAISED).place(relx=0,rely=0.5)
-<<<<<<< HEAD
     yes = Button(top2,text="ok",font = ("Arial",13),width = 5,command = lambda:[mydb.close(),root.quit()],relief=RAISED).place(relx=0.5,rely=0.5)
-=======
-    yes = Button(top2,text="ok",font = ("Arial",13),width = 5,command = root.quit,relief=RAISED).place(relx=0.5,rely=0.5)
->>>>>>> 3397063 (no change)
 
     top2.transient(root) 
     top2.resizable(False,False) 
@@ -180,10 +138,6 @@ def newfileframe():
     table_menu.add_command(label= "Modify")
     table_menu.add_command(label= "Drop")
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 3397063 (no change)
 #______Defining the root window__________
 
 root = Tk()
@@ -197,17 +151,14 @@ querry_frame = Frame(root,width=480,height=1020,bg="gray20").place(x=0,y=0,ancho
 
 conn_button = Button(toolbar_frame,padx=2,text="CONNECT",font = ("Arial",12),command = connector_window,bg="gray27",fg="white",highlightthickness = 0,relief=RAISED).pack(anchor="nw")
 
-<<<<<<< HEAD
 conn_label = Label(text="CONNECTION STATUS",fg="white",bg="gray22")
 conn_label.place(x=1755,y=5,anchor="nw")
 
 global conn_status_label
-conn_status_no = ImageTk.PhotoImage(Image.open("cross.png"))
+conn_status_no = ImageTk.PhotoImage(Image.open("/home/wrawler/vs_code/PyDBMS main/cross.png"))
 conn_status_label = Label(image=conn_status_no,highlightthickness=0,borderwidth=0)
 conn_status_label.place(x=1890,y=5,anchor="nw")
 
-=======
->>>>>>> 3397063 (no change)
 #______Creating a toolbar for root window_________
 
 
@@ -238,8 +189,4 @@ table_menu.add_command(label= "Drop")
 
 #____main_____
 
-<<<<<<< HEAD
 root.mainloop()
-=======
-root.mainloop()
->>>>>>> 3397063 (no change)
