@@ -31,6 +31,7 @@ WHAT CAN YOU DO IN THIS :-
 (15) 	an interactive and clean menu
 (16) 	work on databases as much you need
 (17) 	all this comes along with power of CLI i.e minimum performance issues
+(18)    added a GUI version (in development)
 
 
 MORE UPDATES TO COME..... 
