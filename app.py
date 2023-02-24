@@ -4,16 +4,16 @@ import os
 import atexit
 from PIL import Image, ImageDraw, ImageTk
 import mysql.connector
-from mysql.connector import errorcode
+from mysql.connector import errorcode, errors
+
+
 
 #__________Creating a window to connect to mysql database_________
 def connect():
-    hostname = e1.get()
-    username = e2.get()
-    password = e3.get()
-    dbname = e4.get()
-
-    print(hostname,username,password,dbname,"lol")
+    hostname = hostname_entry_box.get()
+    username = username_entry_box.get()
+    password = password_entry_box.get()
+    dbname = database_name_entry_box.get()
 
     try:
         global conn
@@ -39,6 +39,10 @@ def connect():
         if errorcode.ER_ACCESS_DENIED_ERROR == ez.errno:
             print("\n>>Access Denied: Kindly recheck your connection parameters..")
 
+
+
+#______exit window______
+
 def quit():
     top2 = Toplevel(root)
     top2.geometry("150x80")
@@ -58,25 +62,26 @@ def file_dialog_box():
     root.filename = filedialog.askopenfilename(initialdir = "/",title="Select A File",filetypes = (("Database file","*.db"),("All Files","*.*")))
 
 
+
 #_________Creating a new window similar to root window to create a new file_____________
 
 def newfileframe():
-    top3 = Toplevel(root)
-    top3.geometry("1920x1080")
-    top3.title("PyDBMS")
+    new_window = Toplevel(root)
+    new_window.geometry("1920x1080")
+    new_window.title("PyDBMS")
 
-    toolbar_frame2 = Frame(top3,width=1920,height=60,bg="gray22").place(x=0,y=0,anchor="nw")
-    output_frame2 = Frame(top3,width=1440,height=1020,bg="gray16").place(x=480,y=60,anchor="nw")
-    foo_frame2 = Frame(top3,width=1920,height=30,bg="gray19").place(x=0,y=60,anchor="nw")
-    querry_frame2 = Frame(top3,width=480,height=1020,bg="gray20").place(x=0,y=0,anchor="nw")
+    toolbar_frame_new = Frame(new_window,width=1920,height=60,bg="gray22").place(x=0,y=0,anchor="nw")
+    output_frame_new = Frame(new_window,width=1440,height=1020,bg="gray16").place(x=480,y=60,anchor="nw")
+    foo_frame_new = Frame(new_window,width=1920,height=30,bg="gray19").place(x=0,y=60,anchor="nw")
+    querry_frame_new = Frame(new_window,width=480,height=1020,bg="gray20").place(x=0,y=0,anchor="nw")
 
-    top3.option_add('*tearOff', FALSE)
-    my_menu2 = Menu(toolbar_frame2,bg="gray30",fg="White",font=("Calibri",12),relief=RAISED)
-    top3.config(menu = my_menu2)
+    new_window.option_add('*tearOff', FALSE)
+    my_menu2 = Menu(toolbar_frame_new,bg="gray30",fg="White",font=("Calibri",12),relief=RAISED)
+    new_window.config(menu = my_menu2)
 
     file_menu = Menu(my_menu2)
     my_menu2.add_cascade(label = "FILE",menu = file_menu)
-    file_menu.add_command(label = "New",command=newfileframe)
+    file_menu.add_command(label = "New",command = newfileframe)
     file_menu.add_command(label = "Open File",command = file_dialog_box)
     file_menu.add_command(label = "Save as")
     file_menu.add_command(label = "Save")
@@ -95,6 +100,7 @@ def newfileframe():
     table_menu.add_command(label= "Drop")
 
 
+
 #______Defining the root window__________
 
 root = Tk()
@@ -106,6 +112,8 @@ output_frame = Frame(root,width=1440,height=1020,bg="gray16").place(x=480,y=60,a
 foo_frame = Frame(root,width=1920,height=30,bg="gray19").place(x=0,y=60,anchor="nw")
 querry_frame = Frame(root,width=480,height=1020,bg="gray20").place(x=0,y=0,anchor="nw")
 
+
+
 #______login screen___________
 
 login_window = Toplevel(root)
@@ -114,24 +122,25 @@ login_window.transient(root)
 login_window.geometry("550x250")
 login_window.resizable(False,False)
 
-e1 = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
-e3 = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13),show="*")
-e4 = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
-e2 = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
+hostname_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
+username_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13),show="*")
+password_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
+database_name_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
 
-e1.place(x=200,y=20,anchor="nw")
-e2.place(x=200,y=60,anchor="nw")
-e3.place(x=200,y=100,anchor="nw")
-e4.place(x=200,y=140,anchor="nw")
+hostname_entry_box.place(x=200,y=20,anchor="nw")
+username_entry_box.place(x=200,y=60,anchor="nw")
+password_entry_box.place(x=200,y=100,anchor="nw")
+database_name_entry_box.place(x=200,y=140,anchor="nw")
 
-l1 = Label(login_window,text="HOST:",font=("Arial",20)).place(x=10,y=20,anchor="nw")
-l2 = Label(login_window,text="USER",font=("Arial",20)).place(x=10,y=60,anchor="nw")
-l3 = Label(login_window,text="PASSWORD:",font=("Arial",20)).place(x=10,y=100,anchor="nw")
-l4 = Label(login_window,text="DATABASE:",font=("Arial",20)).place(x=10,y=140,anchor="nw")
-
+hostname_entry_label = Label(login_window,text="HOST:",font=("Arial",20)).place(x=10,y=20,anchor="nw")
+username_entry_label = Label(login_window,text="USER",font=("Arial",20)).place(x=10,y=60,anchor="nw")
+password_entry_label = Label(login_window,text="PASSWORD:",font=("Arial",20)).place(x=10,y=100,anchor="nw")
+database_name_entry_label = Label(login_window,text="DATABASE:",font=("Arial",20)).place(x=10,y=140,anchor="nw")
 
 connect_button = Button(login_window,text="Connect",font=("Arial",15),command=lambda:[connect(),login_window.destroy()]).place(x=150,y=200,anchor="nw")
 cancel_button = Button(login_window,text="Cancel",font=("Arial",15),command=login_window.destroy).place(x=300,y=200,anchor="nw")
+
+
 
 #______Creating a toolbar for root window_________
 
@@ -163,4 +172,5 @@ table_menu.add_command(label= "Drop")
 #____main_____
 
 root.mainloop()
+
 atexit.register(conn.close)
