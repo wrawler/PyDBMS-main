@@ -1,12 +1,15 @@
+#____________importing required modules_____
+
 from tkinter import *
 from tkinter import filedialog
+import sys
 import os
 import atexit
 from PIL import Image, ImageDraw, ImageTk
 import mysql.connector
 from mysql.connector import errorcode, errors
 
-
+sys.stdout = open("/home/wrawler/vs_code/PyDBMS main/logs","a")
 
 #__________Creating a window to connect to mysql database_________
 def connect():
@@ -65,7 +68,7 @@ def file_dialog_box():
 
 #_________Creating a new window similar to root window to create a new file_____________
 
-def newfileframe():
+def newfile_window():
     new_window = Toplevel(root)
     new_window.geometry("1920x1080")
     new_window.title("PyDBMS")
@@ -76,28 +79,28 @@ def newfileframe():
     querry_frame_new = Frame(new_window,width=480,height=1020,bg="gray20").place(x=0,y=0,anchor="nw")
 
     new_window.option_add('*tearOff', FALSE)
-    my_menu2 = Menu(toolbar_frame_new,bg="gray30",fg="White",font=("Calibri",12),relief=RAISED)
-    new_window.config(menu = my_menu2)
+    my_menu_new = Menu(toolbar_frame_new,bg="gray30",fg="White",font=("Calibri",12),relief=RAISED)
+    new_window.config(menu = my_menu_new)
 
-    file_menu = Menu(my_menu2)
-    my_menu2.add_cascade(label = "FILE",menu = file_menu)
-    file_menu.add_command(label = "New",command = newfileframe)
-    file_menu.add_command(label = "Open File",command = file_dialog_box)
-    file_menu.add_command(label = "Save as")
-    file_menu.add_command(label = "Save")
-    file_menu.add_command(label = "Exit",command = quit)
+    file_menu_new = Menu(my_menu_new)
+    my_menu_new.add_cascade(label = "FILE",menu = file_menu_new)
+    file_menu_new.add_command(label = "New",command = newfile_window)
+    file_menu_new.add_command(label = "Open File",command = file_dialog_box)
+    file_menu_new.add_command(label = "Save as")
+    file_menu_new.add_command(label = "Save")
+    file_menu_new.add_command(label = "Exit",command = quit)
 
-    database_menu = Menu(my_menu)
-    my_menu2.add_cascade(label="DATABASE",menu = database_menu)
-    database_menu.add_command(label = "Create")
-    database_menu.add_command(label = "Use")
-    database_menu.add_command(label = "Drop")
+    database_menu_new = Menu(my_menu_new)
+    my_menu_new.add_cascade(label="DATABASE",menu = database_menu_new)
+    database_menu_new.add_command(label = "Create")
+    database_menu_new.add_command(label = "Use")
+    database_menu_new.add_command(label = "Drop")
 
-    table_menu = Menu(my_menu)
-    my_menu2.add_cascade(label="TABLE",menu=table_menu)
-    table_menu.add_command(label= "Create")
-    table_menu.add_command(label= "Modify")
-    table_menu.add_command(label= "Drop")
+    table_menu_new = Menu(my_menu_new)
+    my_menu_new.add_cascade(label="TABLE",menu=table_menu_new)
+    table_menu_new.add_command(label= "Create")
+    table_menu_new.add_command(label= "Modify")
+    table_menu_new.add_command(label= "Drop")
 
 
 
@@ -119,12 +122,13 @@ querry_frame = Frame(root,width=480,height=1020,bg="gray20").place(x=0,y=0,ancho
 login_window = Toplevel(root)
 login_window.title('Login')
 login_window.transient(root)
+login_window.grab_set()
 login_window.geometry("550x250")
 login_window.resizable(False,False)
 
 hostname_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
-username_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13),show="*")
-password_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
+username_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
+password_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13),show = "*")
 database_name_entry_box = Entry(login_window,width=30,relief=RAISED,font=("Calibre",13))
 
 hostname_entry_box.place(x=200,y=20,anchor="nw")
@@ -150,7 +154,7 @@ root.config(menu = my_menu)
 
 file_menu = Menu(my_menu)
 my_menu.add_cascade(label = "FILE",menu = file_menu)
-file_menu.add_command(label = "New",command=newfileframe)
+file_menu.add_command(label = "New",command=newfile_window)
 file_menu.add_command(label = "Open File",command = file_dialog_box)
 file_menu.add_command(label = "Save as")
 file_menu.add_command(label = "Save")
@@ -172,5 +176,5 @@ table_menu.add_command(label= "Drop")
 #____main_____
 
 root.mainloop()
-
 atexit.register(conn.close)
+sys.stdout.close()
