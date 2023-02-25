@@ -11,7 +11,10 @@ from mysql.connector import errorcode, errors
 
 sys.stdout = open("/home/wrawler/vs_code/PyDBMS main/logs","a")
 
-#__________Creating a window to connect to mysql database_________
+#______Function to connect to MySQL DB______
+
+
+
 def connect():
     hostname = hostname_entry_box.get()
     username = username_entry_box.get()
