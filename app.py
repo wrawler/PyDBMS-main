@@ -1,7 +1,9 @@
 #____________importing required modules_____
 
 from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog,ttk
+import tksheet
+import sqlite3
 import sys
 import os
 import atexit
@@ -9,11 +11,16 @@ from PIL import Image, ImageDraw, ImageTk
 import mysql.connector
 from mysql.connector import errorcode, errors
 
-sys.stdout = open("/home/wrawler/vs_code/PyDBMS main/logs","a")
+#sys.stdout = open("D:\vs_code\PyDBMS main\logs","a")
+
+class Table:
+    def __init__(self,output_frame):
+        for i in range(10):
+            for j in range(10):
+                self.e=Entry(output_frame,font=('arial 10'),fg='green')
+                self.e.grid(row=i,column=j)
 
 #______Function to connect to MySQL DB______
-
-
 
 def connect():
     hostname = hostname_entry_box.get()
@@ -113,10 +120,10 @@ root = Tk()
 root.geometry("1920x1080")
 root.title("PyDBMS")
 
-toolbar_frame = Frame(root,width=1920,height=60,bg="gray22").place(x=0,y=0,anchor="nw")
-output_frame = Frame(root,width=1440,height=1020,bg="gray16").place(x=480,y=60,anchor="nw")
-foo_frame = Frame(root,width=1920,height=30,bg="gray19").place(x=0,y=60,anchor="nw")
-querry_frame = Frame(root,width=480,height=1020,bg="gray20").place(x=0,y=0,anchor="nw")
+toolbar_frame = Frame(root,width=1920,height=60,bg="gray22").place(x=0,y=0)
+output_frame = Frame(root,width=1440,height=990,bg="gray16").place(x=480,y=90)
+foo_frame = Frame(root,width=1440,height=30,bg="gray19").place(x=480,y=60)
+querry_frame = Frame(root,width=480,height=1020,bg="gray20").place(x=0,y=60)
 
 
 
@@ -177,7 +184,11 @@ table_menu.add_command(label= "Drop")
 
 
 #____main_____
-
+for i in range(10): #Rows
+    for j in range(10): #Columns
+        b = Entry(output_frame, text="")
+        b.grid(row=i, column=j)
+        
 root.mainloop()
 atexit.register(conn.close)
 sys.stdout.close()

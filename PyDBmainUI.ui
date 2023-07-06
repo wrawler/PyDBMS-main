@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>-10</y>
+      <width>321</width>
+      <height>1071</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>321</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_2">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>0</y>
+      <width>1791</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>80</y>
+      <width>1611</width>
+      <height>921</height>
+     </rect>
+    </property>
+    <row>
+     <property name="text">
+      <string>a</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>b</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>c</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>d</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>e</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>f</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>g</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>h</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>i</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>j</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>k</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>l</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>m</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>o</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>p</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>q</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>r</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>s</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>t</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>u</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>v</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>w</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>x</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>z</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>A</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>B</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>C</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>D</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>E</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>F</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>G</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>H</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>I</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>J</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>K</string>
+     </property>
+    </row>
+    <row>
+     <property name="text">
+      <string>L</string>
+     </property>
+    </row>
+    <column>
+     <property name="text">
+      <string>1</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>2</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>3</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>4</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>5</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>6</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>7</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>8</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>9</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>10</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>11</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string> 12</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>13</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>14</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>15</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>16</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>17</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>18</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>20</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>21</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>22</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>23</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>24</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>25</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>26</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>27</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>28</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>30</string>
+     </property>
+    </column>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>29</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
